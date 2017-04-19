@@ -11,6 +11,7 @@ import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import 'github-markdown-css'
+import Impress from './Impress.vue'
 
 let md = new MarkdownIt({
   highlight (str, lang) {
