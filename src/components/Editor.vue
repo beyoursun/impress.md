@@ -1,7 +1,11 @@
 <template>
   <div id="editor">
     <textarea :value="input" @input="update"></textarea>
-    <article class="markdown-body" v-html="compiledMarkdown"></article>
+    <article class="markdown-body">
+      <impress>
+        <step v-for="(item, index) in slides" v-html="item" :key="index"></step>
+      </impress>
+    </article>
   </div>
 </template>
 
@@ -12,6 +16,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import 'github-markdown-css'
 import Impress from './Impress.vue'
+import Step from './Step.vue'
 
 let md = new MarkdownIt({
   highlight (str, lang) {
@@ -26,6 +31,7 @@ let md = new MarkdownIt({
 })
 
 export default {
+  components: { Impress, Step },
   data () {
     return {
       input: '# markdown-it rulezz!'
@@ -33,8 +39,10 @@ export default {
   },
   computed: {
     compiledMarkdown () {
-      // return marked(this.input, { sanitize: true })
       return md.render(this.input)
+    },
+    slides () {
+      return this.input.split('[slide]').map(item => md.render(item))
     }
   },
   methods: {
@@ -59,7 +67,6 @@ textarea, #editor article {
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
-  padding: 45px;
 }
 
 textarea {
@@ -72,4 +79,6 @@ textarea {
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
 }
+
+#editor article { position: relative; }
 </style>

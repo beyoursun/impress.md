@@ -3,6 +3,7 @@
     id="impress"
     :data-transition-duration="transitionDuration"
     :data-perspective="perspective">
+    <slot></slot>
   </div>
 </template>
 
@@ -19,6 +20,17 @@ export default {
       type: Number,
       default: 1000
     }
+  },
+  mounted () {
+    impress().init()
   }
 }
 </script>
+
+<style>
+#impress,
+#impress > div {
+  width: 100%;
+  height: 100%;
+}
+</style>
