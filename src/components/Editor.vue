@@ -1,7 +1,11 @@
 <template>
   <div id="editor">
-    <textarea :value="input" @input="update"></textarea>
-    <article class="markdown-body">
+    <textarea
+      id="editor-left"
+      :value="input"
+      @input="update">
+    </textarea>
+    <article id="editor-right" class="markdown-body">
       <impress>
         <step v-for="(item, index) in slides" v-html="item" :key="index"></step>
       </impress>
@@ -15,6 +19,7 @@ import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import 'github-markdown-css'
+import '../assets/css/index.css'
 import Impress from './Impress.vue'
 import Step from './Step.vue'
 
@@ -61,12 +66,14 @@ html, body, #editor {
   color: #333;
 }
 
-textarea, #editor article {
-  display: inline-block;
-  width: 49%;
-  height: 100%;
-  vertical-align: top;
-  box-sizing: border-box;
+#editor {
+  display: flex;
+  align-item: stretch;
+}
+#editor-left,
+#editor-right {
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 textarea {
@@ -79,6 +86,4 @@ textarea {
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
 }
-
-#editor article { position: relative; }
 </style>

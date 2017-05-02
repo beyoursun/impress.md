@@ -1,0 +1,11 @@
+#impress { width: 100%; }
+
+#impress > div {
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.step {
+  width: 90%;
+  height: 90%;
+}

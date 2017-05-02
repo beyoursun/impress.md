@@ -19,9 +19,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.step {
-  width: 90%;
-}
-</style>
