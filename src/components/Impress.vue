@@ -20,9 +20,6 @@ export default {
       type: Number,
       default: 1000
     }
-  },
-  mounted () {
-    impress().init()
   }
 }
 </script>

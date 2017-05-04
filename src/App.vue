@@ -1,11 +1,11 @@
 <template>
-  <editor></editor>
+  <book></book>
 </template>
 
 <script>
-import Editor from './components/Editor.vue'
+import Book from './components/Book.vue'
 
 export default {
-  components: { Editor }
+  components: { Book }
 }
 </script>
