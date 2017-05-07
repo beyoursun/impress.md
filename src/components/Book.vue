@@ -1,11 +1,10 @@
 <template>
   <impress>
-    <step id="bored" class="step slide" :x="-1000" :y="-1500">
-      <q>Aren’t you just <b>bored</b> with all those slides-based presentations?</q>
-    </step>
     <step
       v-for="(item, index) in slides"
-      v-html="item"
+      v-html="item.content"
+      :x="item.x"
+      :y="item.y"
       class="markdown-body slide"
       :key="index">
     </step>
@@ -28,8 +27,13 @@ export default {
     }
   },
   created () {
-    this.$http.get('http://localhost:3000/README.md').then(response => {
-      this.slides = response.data.split('[slide]').map(item => md.render(item))
+    this.$http.get('/README.md').then(response => {
+      this.slides = response.data.split('[slide]').map((item, index) => ({
+        x: index * 1000,
+        y: 0,
+        content: md.render(item)
+      }))
+
       this.$nextTick(() => {
         impress().init()
       })
@@ -39,10 +43,17 @@ export default {
 </script>
 
 <style>
+body { background-color: #f2f2f2; }
+
 .slide {
+  opacity: .3;
   width: 900px;
   height: 700px;
   padding: 40px 60px;
   box-sizing: border-box;
+  background-color: #fff;
+  transition: all .5s;
 }
+
+.slide.active { opacity: 1; }
 </style>
