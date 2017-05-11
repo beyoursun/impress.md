@@ -3,7 +3,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import 'github-markdown-css'
 
-export default new MarkdownIt({
+const md = new MarkdownIt({
   highlight (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
@@ -14,3 +14,5 @@ export default new MarkdownIt({
     return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`
   }
 })
+
+export default md

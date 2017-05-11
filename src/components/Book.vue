@@ -28,7 +28,7 @@ export default {
   },
   created () {
     this.$http.get('/md').then(response => {
-      this.slides = response.data.split('[slide]').map((item, index) => ({
+      this.slides = response.data.split('[slide]\n').map((item, index) => ({
         x: index * 1000,
         y: 0,
         content: md.render(item)

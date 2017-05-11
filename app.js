@@ -11,7 +11,7 @@ const webpackConfig = require('./webpack.config')
 // 获取 Markdown
 function getMarkdown (filePath) {
   return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'binary', (err, data) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
         reject(err)
       } else {
@@ -34,9 +34,6 @@ module.exports = function (filePath) {
       noInfo: true,
       publicPath: webpackConfig.output.publicPath
     })))
-    console.log('development')
-  } else {
-    console.log('production')
   }
 
   router.get('/md', async (ctx) => {
@@ -51,4 +48,3 @@ module.exports = function (filePath) {
 
   console.log('starting at port 3000')
 }
-

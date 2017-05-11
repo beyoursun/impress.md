@@ -1,22 +1,42 @@
-# impress.md
+# Impress Book
 
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> 使用 `Impress Book` 来惊艳你的听众
 
 [slide]
 
-## This is another slide
+## Installation
+
+```bash
+# install global
+npm install -g impressbook
+```
+
+[slide]
+
+## Usage
+
+```bash
+# start a demo
+impressbook
+
+# start your presentation
+impressbook presentation.md
+```
+
+[slide]
+
+## Syntax
+
+Use `[slide]` to split the sliders
+
+```markdown
+# Slider1
+
+[slide] 
+
+# Slider2
+
+[slide] 
+
+# Slider3
+```
