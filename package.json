@@ -1,6 +1,6 @@
 {
-  "name": "impress.md",
-  "description": "A Vue.js project",
+  "name": "impressbook",
+  "description": "使用 Impress Book 来惊艳你的听众",
   "version": "1.0.0",
   "author": "sunbinbin <sunbinbin@xunlei.com>",
   "private": true,
