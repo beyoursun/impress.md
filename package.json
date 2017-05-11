@@ -3,7 +3,6 @@
   "description": "使用 Impress Book 来惊艳你的听众",
   "version": "1.0.0",
   "author": "sunbinbin <sunbinbin@xunlei.com>",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --port 5000",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
