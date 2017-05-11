@@ -7,9 +7,13 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --port 5000",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "cross-env NODE_ENV=development node index.js"
+    "start": "cross-env NODE_ENV=development node server.js"
+  },
+  "bin": {
+    "impressbook": "./bin/impressbook"
   },
   "dependencies": {
+    "commander": "^2.9.0",
     "github-markdown-css": "^2.6.0",
     "highlight.js": "^9.10.0",
     "koa": "^2.2.0",
