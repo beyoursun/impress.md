@@ -4,9 +4,6 @@ const Koa = require('koa')
 const router = new require('koa-router')()
 const static = require('koa-static')
 const convert = require('koa-convert')
-const webpack = require('webpack')
-const webpackMiddleware = require("koa-webpack-dev-middleware")
-const webpackConfig = require('./webpack.config')
 
 // 获取 Markdown
 function getMarkdown (filePath) {
@@ -30,6 +27,9 @@ module.exports = function (filePath) {
   ))
 
   if (process.env.NODE_ENV === 'development') {
+    const webpack = require('webpack')
+    const webpackMiddleware = require("koa-webpack-dev-middleware")
+    const webpackConfig = require('./webpack.config')
     app.use(convert(webpackMiddleware(webpack(webpackConfig), {
       noInfo: true,
       publicPath: webpackConfig.output.publicPath
@@ -44,7 +44,8 @@ module.exports = function (filePath) {
     .use(router.routes())
     .use(router.allowedMethods())
 
-  app.listen(3000)
+  app.listen(1024)
 
-  console.log('starting at port 3000')
+  console.log('starting at port 1024')
+  require('opn')('http://localhost:1024')
 }
